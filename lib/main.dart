@@ -1,4 +1,5 @@
-import 'package:e_commerce/homepage.dart';
+import 'package:e_commerce/bottom_navigation/bottom_navigation.dart';
+import 'package:e_commerce/bottom_navigation/homescreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepage()
+      home: BottomNavigation()
     );
   }    
 }
