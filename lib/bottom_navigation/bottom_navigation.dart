@@ -32,37 +32,36 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Shop"),
+        actions: [
+          IconButton(onPressed: () => {}, icon: Icon(Icons.search))
+        ],
+        
+        
       ),
       bottomNavigationBar: SalomonBottomBar(
+        backgroundColor: Colors.indigo[900],
         currentIndex: _selectedIndex,
         onTap: (i) => setState(() => _selectedIndex = i),
         items: [
           /// Home
           SalomonBottomBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Colors.white,),
             title: Text("Home"),
-            selectedColor: Colors.purple,
+            selectedColor: Colors.white,
           ),
 
           /// Likes
           SalomonBottomBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(Icons.favorite_border, color: Colors.white,),
             title: Text("Likes"),
-            selectedColor: Colors.pink,
-          ),
-
-          /// Search
-          SalomonBottomBarItem(
-            icon: Icon(Icons.search),
-            title: Text("Search"),
-            selectedColor: Colors.orange,
+            selectedColor: Colors.white,
           ),
 
           /// Profile
           SalomonBottomBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person, color: Colors.white,),
             title: Text("Profile"),
-            selectedColor: Colors.teal,
+            selectedColor: Colors.white,
           ),
         ],
       ),
