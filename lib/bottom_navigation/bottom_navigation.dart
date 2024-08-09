@@ -2,6 +2,7 @@ import 'package:e_commerce/bottom_navigation/ProfileScreen.dart';
 import 'package:e_commerce/bottom_navigation/homescreen.dart';
 import 'package:e_commerce/bottom_navigation/searchscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -11,8 +12,7 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-
-    int _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   // List of screens to display
   final List<Widget> _screens = [
@@ -30,24 +30,41 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+      appBar: AppBar(
+        title: Text("Shop"),
+      ),
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: _selectedIndex,
+        onTap: (i) => setState(() => _selectedIndex = i),
+        items: [
+          /// Home
+          SalomonBottomBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            title: Text("Home"),
+            selectedColor: Colors.purple,
           ),
-          BottomNavigationBarItem(
+
+          /// Likes
+          SalomonBottomBarItem(
+            icon: Icon(Icons.favorite_border),
+            title: Text("Likes"),
+            selectedColor: Colors.pink,
+          ),
+
+          /// Search
+          SalomonBottomBarItem(
             icon: Icon(Icons.search),
-            label: 'Search',
+            title: Text("Search"),
+            selectedColor: Colors.orange,
           ),
-          BottomNavigationBarItem(
+
+          /// Profile
+          SalomonBottomBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            title: Text("Profile"),
+            selectedColor: Colors.teal,
           ),
         ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
       ),
     );
   }
