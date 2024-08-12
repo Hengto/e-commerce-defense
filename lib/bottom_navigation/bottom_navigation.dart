@@ -12,14 +12,15 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _selectedIndex = 0;
 
-  // List of screens to display
-  final List<Widget> _screens = [
-    HomeScreen(),
-    SearchScreen(),
-    ProfileScreen(),
-  ];
+int _selectedIndex = 0;
+  
+   final List<Widget> _page= [
+      HomeScreen(),
+      SearchScreen(),
+      ProfileScreen(),
+    ];
+ 
 
   void _onItemTapped(int index) {
     setState(() {
@@ -30,40 +31,44 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Shop"),
-        actions: [
-          IconButton(onPressed: () => {}, icon: Icon(Icons.search))
-        ],
-        
-        
-      ),
-      bottomNavigationBar: SalomonBottomBar(
-        backgroundColor: Colors.indigo[900],
-        currentIndex: _selectedIndex,
-        onTap: (i) => setState(() => _selectedIndex = i),
-        items: [
-          /// Home
-          SalomonBottomBarItem(
-            icon: Icon(Icons.home, color: Colors.white,),
-            title: Text("Home"),
-            selectedColor: Colors.white,
+      body:_page[_selectedIndex],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(17), topRight: Radius.circular(17)),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, blurRadius: 10)
+          ]
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(17), topRight: Radius.circular(17)),
+          child: SalomonBottomBar(
+            backgroundColor: Colors.indigo[900],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            items: [
+              /// Home
+              SalomonBottomBarItem(
+                icon: Icon(Icons.home, color: Colors.white,),
+                title: Text("Home"),
+                selectedColor: Colors.white, 
+              ),
+          
+              /// Likes
+              SalomonBottomBarItem(
+                icon: Icon(Icons.favorite_border, color: Colors.white,),
+                title: Text("Likes"),
+                selectedColor: Colors.white,
+              ),
+          
+              /// Profile
+              SalomonBottomBarItem(
+                icon: Icon(Icons.person, color: Colors.white,),
+                title: Text("Profile"),
+                selectedColor: Colors.white,
+              ),
+            ],
           ),
-
-          /// Likes
-          SalomonBottomBarItem(
-            icon: Icon(Icons.favorite_border, color: Colors.white,),
-            title: Text("Likes"),
-            selectedColor: Colors.white,
-          ),
-
-          /// Profile
-          SalomonBottomBarItem(
-            icon: Icon(Icons.person, color: Colors.white,),
-            title: Text("Profile"),
-            selectedColor: Colors.white,
-          ),
-        ],
+        ),
       ),
     );
   }
