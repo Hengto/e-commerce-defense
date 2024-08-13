@@ -1,6 +1,6 @@
 import 'package:e_commerce/bottom_navigation/ProfileScreen.dart';
 import 'package:e_commerce/bottom_navigation/homescreen.dart';
-import 'package:e_commerce/bottom_navigation/searchscreen.dart';
+import 'package:e_commerce/bottom_navigation/FavoriteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -14,10 +14,10 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
 
 int _selectedIndex = 0;
-  
+
    final List<Widget> _page= [
       HomeScreen(),
-      SearchScreen(),
+     // SearchScreen(),
       ProfileScreen(),
     ];
  
